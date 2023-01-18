@@ -1,0 +1,62 @@
+<br>
+<div class="card" *ngIf="appointments != null">
+    <div class="card-header">
+        Appointment ID: {{appointments.appointmentId}}
+    </div>
+ 
+    <div class="card-body">
+        
+        <div class="row">
+            <div class="col-md-2">ownerIdCardNumber</div>
+            <div class="col-md-10">{{appointments.ownerIdCardNumber}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">patientName:</div>
+            <div class="col-md-10">{{appointments.patientName}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Full Owner Name:</div>
+            <div class="col-md-10">{{appointments.ownerName + ' ' + appointments.ownerSurname}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">animalType:</div>
+            <div class="col-md-10">{{appointments.animalType}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">appointmentDuration:</div>
+            <div class="col-md-10">{{appointments.appointmentDuration}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Date and Time:</div>
+            <div class="col-md-10">{{appointments.appointmentDate + ' ' + appointments.appointmentTime}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">ownerContactNumber:</div>
+            <div class="col-md-10">{{appointments.ownerContactNumber}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">reasonForAppointment:</div>
+            <div class="col-md-10">{{appointments.reasonForAppointment}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">vetNotes:</div>
+            <div class="col-md-10">{{appointments.vetNotes}}</div>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="mt-5">
+    <button type="button" class="btn btn-primary" (click)="onBackButtonClick()">
+        Back to Product List
+    </button>
+</div>

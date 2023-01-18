@@ -1,0 +1,40 @@
+<div id="content" #content class=" table=responsive mt-3" *ngIf="appointments !=null && appointments.length > 0">
+
+    <button (click)="exportexcel()">Export to Excel</button>
+    <button (click)="exportpdf()">Export to PDF</button>
+ 
+
+    <table id="excel-table" class="table">
+        <thead >
+            <tr>
+                <th>Id</th>
+                <th>Patient Name</th>
+                <th>Animal Type</th>
+                <th>Owner Name</th>
+                <th>Owner Surname</th>
+                <th>Appointment Date and Time</th>
+                <th>Appointment Duration</th>
+            </tr>
+        </thead> 
+        <tbody>
+            <tr *ngFor="let appointment of appointments">
+
+                <td>{{appointment.appointmentId}}</td>
+                <td>{{appointment.patientName}}</td>
+                <td>{{appointment.animalType}}</td>
+                <td>{{appointment.ownerName}}</td>
+                <td>{{appointment.ownerSurname}}</td>
+                <td>{{appointment.appointmentDate + ' ' + appointment.appointmentTime}}</td>
+                <td>{{appointment.appointmentDuration}}</td>
+
+                <td><a [routerLink]="['/appointment-list',appointment.appointmentId]"><button class="btn btn-primary" (click)="viewButton()">View</button></a></td>
+                <td><a [routerLink]="['/update',appointment.appointmentId]"><button class="btn btn-primary" (click)="updateButton()">Update</button></a></td>
+                <div *appHideForRoles = "['RECEPTIONIST','VET']">
+                    <td><a [routerLink]="['/delete',appointment.appointmentId]"><button class="btn btn-primary" (click)="deleteButton()">Delete</button></a></td>
+                </div>
+                </tr>
+        </tbody>
+    </table> 
+</div>
+
+<!-- <button *ngIf="item.isCompleted == false" class="btn btn-primary" (click)="onButtonClicked(item)">Mark Completed</button> -->

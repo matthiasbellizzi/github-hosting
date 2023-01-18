@@ -1,0 +1,45 @@
+<div *appHideForRoles = "['unauth']">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #81caff;" >
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/appointment-list" >{{title}}</a>
+          </li>
+          <div *appHideForRoles = "['VET']">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/add-appointment" routerLinkActive="active">Add</a>
+            </li>
+          </div>
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/appointment-list" routerLinkActive="active">List</a>
+          </li>
+          
+        </ul>
+        
+          <form class="d-flex" >
+            <li style="list-style: none;" class="nav-item">
+              <button class="btn btn-primary" (click)="logoutButton()">Log out</button>
+            </li>
+            <div *appHideForRoles = "['RECEPTIONIST','VET','ADMIN']">
+              <li style="list-style: none;" class="nav-item" >
+                <a routerLink="/login"><button class="btn btn-primary">Log In</button></a>
+              </li>
+            </div>
+          </form>
+      
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="mt-2">
+  <router-outlet></router-outlet>  
+  <!-- <app-appointment-list></app-appointment-list> -->
+</div>
+
+
+<!-- [item]="item" (itemAdded)="onItemAdded($event)" -->

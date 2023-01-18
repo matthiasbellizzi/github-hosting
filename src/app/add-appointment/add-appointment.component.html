@@ -1,0 +1,136 @@
+<div class="card">
+    <h5 class="card-header">Add an Appointment</h5>
+    <div class="card-body">
+        <form novalidate [formGroup]="appForm" (ngSubmit)="submitForm()">
+
+            <div class="form-group">
+                <label for="txtownerIdCardNumber">Id Card Number</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="ownerIdCardNumber"
+                    id="txtownerIdCardNumber"
+                    placeholder="Enter owner Id Card Number">
+                    
+                     <span class="help-block" *ngIf="appForm.get('ownerIdCardNumber')?.errors && (appForm.get('ownerIdCardNumber')?.dirty || appForm.get('ownerIdCardNumber')?.touched)">
+                        <p *ngIf="appForm.get('ownerIdCardNumber')?.errors?.['ownerIdCardNumberInvalid']" class="text-danger">Input valid format 'eg. 0276600L' - 7 numbers, followed by a Capital letter(A, L or M)</p>
+                    </span>
+            </div>     
+            
+            <div class="form-group"> 
+                <label for="txtpatientName">patient Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="patientName"
+                    id="txtpatientName"
+                    placeholder="Enter patient Name">                  
+            </div>       
+            
+            <div class="form-group">
+                <label for="txtanimalType">animal Type</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="animalType"
+                    id="txtanimalType"
+                    placeholder="Enter animal Type">                  
+            </div>   
+            
+            <div class="form-group">
+                <label for="txtownerName">owner Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="ownerName"
+                    id="txtownerName"
+                    placeholder="Enter owner Name">                  
+            </div>  
+
+            <div class="form-group">
+                <label for="txtownerSurname">owner Surname</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="ownerSurname"
+                    id="txtownerSurname"
+                    placeholder="Enter owner Surname">                  
+            </div>  
+
+            <div class="form-group">
+                <label for="txtappointmentDuration">appointment Duration</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="appointmentDuration"
+                    id="txtappointmentDuration"
+                    placeholder="Enter appointment Duration">                  
+            </div>
+            
+            <div class="form-group">
+                <label for="txtappointmentDate">appointment Date</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="appointmentDate"
+                    id="txtappointmentDate"
+                    placeholder="Enter appointment Date">
+
+                    <span class="help-block" *ngIf="appForm.get('appointmentDate')?.errors && (appForm.get('appointmentDate')?.dirty || appForm.get('appointmentDate')?.touched)">
+                        <p *ngIf="appForm.get('appointmentDate')?.errors?.['appointmentDateInvalid']" class="text-danger">Date cannot be in the past</p>
+                    </span>            
+            </div>  
+
+            <div class="form-group">
+                <label for="txtappointmentTime">appointment Time</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="appointmentTime"
+                    id="txtappointmentTime"
+                    placeholder="Enter appointment Time">                  
+            </div>  
+
+            <div class="form-group">
+                <label for="txtownerContactNumber">Contact Number</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="ownerContactNumber"
+                    id="txtownerContactNumber"
+                    placeholder="Enter owner Contact Number"> 
+                    
+                <span class="help-block" *ngIf="appForm.get('ownerContactNumber')?.errors && (appForm.get('ownerContactNumber')?.dirty || appForm.get('ownerContactNumber')?.touched)">
+                    <p *ngIf="appForm.get('ownerContactNumber')?.errors?.['pattern']" class="text-danger">Input digits only</p>
+                    <p *ngIf="appForm.get('ownerContactNumber')?.errors?.['minLength']" class="text-danger">Phone should be 8 numbers</p> 
+                    <p *ngIf="appForm.get('ownerContactNumber')?.errors?.['maxLength']" class="text-danger">Phone should be 8 numbers</p>
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="txtreasonForAppointment">reason For Appointment</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="reasonForAppointment"
+                    id="txtreasonForAppointment"
+                    placeholder="Enter reasonForAppointment">                  
+            </div> 
+            
+            <div *appHideForRoles = "['RECEPTIONIST']" class="form-group">
+                <label for="txtvetNotes">vet Notes</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    formControlName="vetNotes"
+                    id="txtvetNotes"
+                    placeholder="Enter vet Notes">                  
+            </div> 
+                      
+            
+            <div class="mt-2">
+                <button type="submit" [disabled]="!appForm.valid" class="btn btn-primary" >Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
